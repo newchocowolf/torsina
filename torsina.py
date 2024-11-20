@@ -447,7 +447,7 @@ def main():
         # Get Input Number
         choise = input("Enter Your Choice [1-13]:")
         # Check input number
-        match choise:
+        if choise:
             case "0":
                 clear_screen()
                 break
