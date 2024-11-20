@@ -448,6 +448,7 @@ def main():
 # Check input number
         if choise == "0":
             clear_screen()
+            break
         elif choise == "1":
             install_tor()
         elif choise == "2":
