@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # دانلود فایل torsina.py
-wget https://raw.githubusercontent.com/sinasims/torsina/refs/heads/main/torsina.py -O torsina.py
+wget https://raw.githubusercontent.com/newchocowolf/torsina/refs/heads/main/torsina.py -O torsina.py
 
 # تغییر دسترسی به فایل autoTOR.py
 chmod 777 torsina.py
