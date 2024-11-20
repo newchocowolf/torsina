@@ -15,7 +15,7 @@
 ## How to Run?
 **Run the following script on your server (Debian or Ubuntu):**
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/sinasims/torsina/refs/heads/main/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/newchocowolf/torsina/refs/heads/main/install.sh)
 ```
 
 ## Menu (v1)
