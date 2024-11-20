@@ -437,7 +437,6 @@ def get_server_location():
 
 
 
-
 def main():
     while True:
         clear_screen()
@@ -446,77 +445,69 @@ def main():
         
         # Get Input Number
         choise = input("Enter Your Choice [1-13]:")
-        # Check input number
-        if choise:
-            case "0":
-                clear_screen()
-                break
-            case "1":
-                install_tor()
-
-            case "2":
-                update_tor()
-
-            case "3":
-                uninstall_tor()
-            case "4":
-                node_ip = get_tor_ip()
-                print(f"Tor Server IP: {node_ip}")
-                input("press Enter to continue")
-            case "5":
-                create_cron_job()
-            case "6":
-                reload_tor()
-                restart_tor()
-                print("Your Tor ip has been changed.")
-                input("Press Enter to continue...")
-            
-            case "7":
+# Check input number
+        if choise == "0":
+            clear_screen()
+        elif choise == "1":
+            install_tor()
+        elif choise == "2":
+            update_tor()
+        elif choise == "3":
+            uninstall_tor()
+        elif choise == "4":
+            node_ip = get_tor_ip()
+            print(f"Tor Server IP: {node_ip}")
+            input("Press Enter to continue")
+        elif choise == "5":
+            create_cron_job()
+        elif choise == "6":
+            reload_tor()
+            restart_tor()
+            print("Your Tor IP has been changed.")
+            input("Press Enter to continue...")
+        elif choise == "7":
+            port = input("Enter Your Tor Port: ")
+            while True:
+                if not port.isdigit():
+                    print("Your input is \033[1;31mnot valid\033[0m...")
+                elif not check_portNumber(port):
+                    print(f"Port {port} is \033[1;31mBusy\033[0m...")
+                else:
+                    break  
                 port = input("Enter Your Tor Port: ")
-                check = False
-                while True:
-                    if not port.isdigit():
-                        print("Your input is \033[1;31mnot valid\033[0m...")
-                    elif check_portNumber(port) == False:
-                        print(f"Port {port} is \033[1;31mBusy033[0m...")
-                    else:
-                        break  
-                    port = input("Enter Your Tor Port: ")
-
-                modify_torrc(torrc_path, new_socks_port=str(port))
-                reload_tor()
-                restart_tor()
-                input("Your port has been change\nPress Enter to continue....")
-            case "8":
-                print("You can use these Countries:")
-                for code, country in valid_country_codes.items():
-                    print(f"{country} -> \033[0;32m{code}\033[0m")
+        
+            modify_torrc(torrc_path, new_socks_port=str(port))
+            reload_tor()
+            restart_tor()
+            input("Your port has been changed.\nPress Enter to continue...")
+        elif choise == "8":
+            print("You can use these Countries:")
+            for code, country in valid_country_codes.items():
+                print(f"{country} -> \033[0;32m{code}\033[0m")
+            country_data = update_tor_country()
+            while country_data == False:
                 country_data = update_tor_country()
-                while country_data == False:
-                    country_data = update_tor_country()
-                reload_tor()
-                restart_tor()
-                input(f"Countries of tor has been updated with: {country_data}\nPress Enter to continue....")
-
-            case "9":
-                start_tor()
-                input("Tor has been started\nPress Enter to continue...")
-            case "10":
-                stop_tor()
-                input("Tor has been stoped\nPress Enter to continue...")
-            case "11":
-                restart_tor()
-                input("Tor has been restarted\nPress Enter to continue...")
-            case "12":
-                reload_tor()
-                input("Tor has been reloaded\nPress Enter to continue...")
-            case "13":
-                status_tor()
-                input("\nPress Enter to continue...")
-            case _:
-                print("Your input is invalid...")
-                input("Press Enter to continue...")
-
+            reload_tor()
+            restart_tor()
+            input(f"Countries for Tor have been updated with: {country_data}\nPress Enter to continue...")
+        elif choise == "9":
+            start_tor()
+            input("Tor has been started.\nPress Enter to continue...")
+        elif choise == "10":
+            stop_tor()
+            input("Tor has been stopped.\nPress Enter to continue...")
+        elif choise == "11":
+            restart_tor()
+            input("Tor has been restarted.\nPress Enter to continue...")
+        elif choise == "12":
+            reload_tor()
+            input("Tor has been reloaded.\nPress Enter to continue...")
+        elif choise == "13":
+            status_tor()
+            input("\nPress Enter to continue...")
+        else:
+            print("Your input is invalid...")
+            input("Press Enter to continue...")
 
 
     
